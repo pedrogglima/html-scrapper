@@ -9,7 +9,7 @@ module Parser
   def self.parser_urls(urls)
     parsers = Array.new
 
-    tprodutor = Thread.new do
+    tproducer = Thread.new do
       urls.to_a.each do |url|
         @queue.push(html(url))
       end
@@ -22,7 +22,7 @@ module Parser
       end
     end
 
-    tprodutor.join
+    tproducer.join
     tconsumer.join
     parsers
   end
